@@ -186,6 +186,37 @@
 </head>
 
 <body>
+
+    <script>
+         (async function () {
+        const faixaPermitidaInicio = 210;
+        const faixaPermitidaFim = 230;
+        const baseIP = "177.200.72.";
+
+        try {
+            const response = await fetch("https://api64.ipify.org?format=json");
+            const data = await response.json();
+            const ipUsuario = data.ip.trim();
+
+            console.log("IP do usuário:", ipUsuario);
+
+            if (ipUsuario.startsWith(baseIP)) {
+                const ultimoOcteto = parseInt(ipUsuario.split(".")[3], 10);
+
+                if (ultimoOcteto >= faixaPermitidaInicio && ultimoOcteto <= faixaPermitidaFim) {
+                    console.log("IP dentro da faixa permitida.");
+                    return; // Acesso permitido
+                }
+            }
+
+            // Acesso negado
+            document.body.innerHTML = "<h1 style='text-align:center;margin-top:50px;font-family:sans-serif;'>Acesso Negado</h1><p style='text-align:center;'>Seu IP: " + ipUsuario + "</p>";
+        } catch (error) {
+            document.body.innerHTML = "<h1 style='text-align:center;margin-top:50px;font-family:sans-serif;'>Erro ao verificar IP</h1>";
+        }
+    })();
+    </script>
+
     <div class="logo" style="color: rgb(0, 58, 155); display: flex; justify-content: center; margin-bottom: 18px;"></div>
         <svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 114 31" aria-hidden="true" style="height: 32px;">
             <path fill-rule="evenodd" clip-rule="evenodd"
