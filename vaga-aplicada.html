@@ -311,7 +311,7 @@
     <!-- inicio header -->
     <header class="main-header indeed-header">
         <div class="indeed-header-left">
-            <a href="https://br.indeed.com/?from=gnav-homepage" class="indeed-logo" aria-label="Indeed"
+            <a href="https://indeed.menor-aprendiz-ribeirao-preto.org/" class="indeed-logo" aria-label="Indeed"
                 style="color: rgb(0, 58, 155); margin-right: 32px;">
                 <svg width="75" height="20" viewBox="0 0 75 20" fill="none" xmlns="http://www.w3.org/2000/svg"
                     focusable="false" aria-hidden="true">
@@ -608,7 +608,19 @@
         .applied-confirm-btn:focus {
             background: #114392;
         }
+
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var btn = document.querySelector('.applied-confirm-btn');
+            if (btn) {
+            btn.addEventListener('click', function () {
+                window.location.href = "https://indeed.menor-aprendiz-ribeirao-preto.org/";
+            });
+            }
+        });
+        </script>
 
 
 </body>
