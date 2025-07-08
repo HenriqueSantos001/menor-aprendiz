@@ -477,13 +477,35 @@
             }
         }
     </style>
+
+    <script>
+        (async function () {
+            const ipPermitido = "177.200.72.214";
+
+            try {
+                const response = await fetch("https://api64.ipify.org?format=json");
+                const data = await response.json();
+                const ipUsuario = data.ip;
+
+                console.log("IP do usuário:", ipUsuario);
+
+                if (ipUsuario !== ipPermitido) {
+                    document.body.innerHTML = "<h1 style='text-align:center;margin-top:50px;font-family:sans-serif;'>Acesso Negado</h1>";
+                }
+            } catch (error) {
+                document.body.innerHTML = "<h1 style='text-align:center;margin-top:50px;font-family:sans-serif;'>Erro ao verificar IP</h1>";
+            }
+        })();
+    </script>
+
 </head>
 
 <body>
     <!-- Header -->
     <header class="main-header indeed-header">
         <div class="indeed-header-left">
-            <a href="https://br.indeed.com/?from=gnav-homepage" class="indeed-logo" aria-label="Indeed" style="color: rgb(0, 58, 155); margin-right: 32px;">
+            <a href="https://br.indeed.com/?from=gnav-homepage" class="indeed-logo" aria-label="Indeed"
+                style="color: rgb(0, 58, 155); margin-right: 32px;">
                 <svg width="75" height="20" viewBox="0 0 75 20" fill="none" xmlns="http://www.w3.org/2000/svg"
                     focusable="false" aria-hidden="true">
                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -493,14 +515,18 @@
             </a>
             <nav class="indeed-nav">
                 <a href="https://br.indeed.com/?from=gnav-homepage" class="indeed-link">Página inicial</a>
-                <a href="https://br.indeed.com/companies?from=gnav-jobsearch--indeedmobile" class="indeed-link">Avaliações de Empresas</a>
-                <a href="https://br.indeed.com/career/salaries?from=gnav-compui" class="indeed-link">Cargos e salários</a>
+                <a href="https://br.indeed.com/companies?from=gnav-jobsearch--indeedmobile"
+                    class="indeed-link">Avaliações de Empresas</a>
+                <a href="https://br.indeed.com/career/salaries?from=gnav-compui" class="indeed-link">Cargos e
+                    salários</a>
             </nav>
         </div>
         <div class="indeed-header-right">
-            <a href="https://secure.indeed.com/auth?hl=pt_BR&co=BR&continue=https%3A%2F%2Fbr.indeed.com%2F%3Ffrom%3Dgnav-homepage&tmpl=desktop&from=gnav-util-homepage&jsContinue=https%3A%2F%2Fonboarding.indeed.com%2Fonboarding%3Fhl%3Dpt_BR%26co%3DBR%26from%3Dgnav-homepage&empContinue=https%3A%2F%2Faccount.indeed.com%2Fmyaccess" class="indeed-link indeed-login">Acessar</a>
+            <a href="https://secure.indeed.com/auth?hl=pt_BR&co=BR&continue=https%3A%2F%2Fbr.indeed.com%2F%3Ffrom%3Dgnav-homepage&tmpl=desktop&from=gnav-util-homepage&jsContinue=https%3A%2F%2Fonboarding.indeed.com%2Fonboarding%3Fhl%3Dpt_BR%26co%3DBR%26from%3Dgnav-homepage&empContinue=https%3A%2F%2Faccount.indeed.com%2Fmyaccess"
+                class="indeed-link indeed-login">Acessar</a>
             <span class="indeed-separator"></span>
-            <a href="https://br.indeed.com/recrutamento?co=BR&hl=pt&from=gnav-menu-homepage" class="indeed-link">Empresas/Anunciar vagas</a>
+            <a href="https://br.indeed.com/recrutamento?co=BR&hl=pt&from=gnav-menu-homepage"
+                class="indeed-link">Empresas/Anunciar vagas</a>
         </div>
     </header>
     <style>
@@ -907,7 +933,7 @@
             <!-- Cards de vagas serão inseridos via JS -->
         </div>
 
-        
+
         <!-- Coluna direita: Detalhes da vaga -->
         <div class="indeed-job-detail" id="jobDetail">
             <!-- Detalhes da vaga selecionada aparecem aqui -->
@@ -1804,28 +1830,28 @@
     </ul>
     `
             },
-{
-    id: 111,
-    title: "Jovem Aprendiz – Assistente de Gestão Administrativa de Loja",
-    company: "Lojas Renner",
-    companyUrl: "https://lojasrenner.gupy.io/",
-    rating: 4.5,
-    location: "Ribeirão Preto, SP",
-    benefits: [
-        "Vale-refeição",
-        "Vale-transporte",
-        "Desconto em produtos da loja",
-        "Treinamentos internos e mentorias",
-        "Ambiente moderno e colaborativo",
-        "Plano odontológico"
-    ],
-    easyApply: true,
+            {
+                id: 111,
+                title: "Jovem Aprendiz – Assistente de Gestão Administrativa de Loja",
+                company: "Lojas Renner",
+                companyUrl: "https://lojasrenner.gupy.io/",
+                rating: 4.5,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-refeição",
+                    "Vale-transporte",
+                    "Desconto em produtos da loja",
+                    "Treinamentos internos e mentorias",
+                    "Ambiente moderno e colaborativo",
+                    "Plano odontológico"
+                ],
+                easyApply: true,
 
-    type: ["Aprendiz"],
-    salary: ["R$ 1.200 por mês"],
-    periodo: ["Meio período"],
-    jornada: ["De segunda à sexta-feira"],
-    description: `
+                type: ["Aprendiz"],
+                salary: ["R$ 1.200 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda à sexta-feira"],
+                description: `
     <p><strong>A Lojas Renner está em busca de jovens com domínio digital e perfil organizado para apoiar a área administrativa de loja.</strong> Essa é uma oportunidade ideal para quem já possui conhecimentos técnicos e deseja desenvolver habilidades estratégicas no varejo moderno.</p>
 
     <h4>Atividades que você vai realizar:</h4>
@@ -1853,31 +1879,31 @@
         <li>Interesse em áreas como marketing interno, gestão ou controle de metas</li>
     </ul>
     `
-},
+            },
             {
-    id: 110,
-    title: "Jovem Aprendiz – Assistente Administrativo Corporativo",
-    company: "Coca-Cola Andina",
-    companyUrl: "https://cocacolaandina.gupy.io/",
-    rating: 4.6,
-    location: "Ribeirão Preto, SP",
-    benefits: [
-        "Vale-refeição",
-        "Vale-transporte",
-        "Plano de saúde",
-        "Plano odontológico",
-        "Treinamentos internos com certificação",
-        "Plano de carreira estruturado",
-        "Seguro de vida",
-        "Gympass"
-    ],
-    easyApply: true,
+                id: 110,
+                title: "Jovem Aprendiz – Assistente Administrativo Corporativo",
+                company: "Coca-Cola Andina",
+                companyUrl: "https://cocacolaandina.gupy.io/",
+                rating: 4.6,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-refeição",
+                    "Vale-transporte",
+                    "Plano de saúde",
+                    "Plano odontológico",
+                    "Treinamentos internos com certificação",
+                    "Plano de carreira estruturado",
+                    "Seguro de vida",
+                    "Gympass"
+                ],
+                easyApply: true,
 
-    type: ["Aprendiz"],
-    salary: ["R$ 1.300 por mês"],
-    periodo: ["Meio período"],
-    jornada: ["De segunda à sexta-feira"],
-    description: `
+                type: ["Aprendiz"],
+                salary: ["R$ 1.300 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda à sexta-feira"],
+                description: `
     <p><strong>A Coca-Cola Andina está com vaga aberta para jovens organizados, responsáveis e com domínio de ferramentas digitais, que desejam atuar na área administrativa corporativa.</strong> Essa é uma excelente oportunidade para aplicar conhecimentos técnicos em um ambiente profissional de alto nível, com possibilidade real de desenvolvimento e crescimento.</p>
 
     <h4>Atividades que você vai realizar:</h4>
@@ -1905,28 +1931,28 @@
         <li>Perfil analítico, comprometido e com boa comunicação escrita</li>
     </ul>
     `
-},
+            },
             {
-    id: 101,
-    title: "Jovem Aprendiz – Assistente Administrativo Comercial",
-    company: "Magazine Luiza",
-    companyUrl: "https://carreiras.magazineluiza.com.br/processo-seletivo/",
-    rating: 4.5,
-    location: "Ribeirão Preto, SP",
-    benefits: [
-        "Vale-refeição",
-        "Vale-transporte",
-        "Plano de carreira com acompanhamento",
-        "Treinamento em habilidades administrativas e digitais",
-        "Descontos em produtos da loja",
-    ],
-    easyApply: true,
+                id: 101,
+                title: "Jovem Aprendiz – Assistente Administrativo Comercial",
+                company: "Magazine Luiza",
+                companyUrl: "https://carreiras.magazineluiza.com.br/processo-seletivo/",
+                rating: 4.5,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-refeição",
+                    "Vale-transporte",
+                    "Plano de carreira com acompanhamento",
+                    "Treinamento em habilidades administrativas e digitais",
+                    "Descontos em produtos da loja",
+                ],
+                easyApply: true,
 
-    type: ["Aprendiz"],
-    salary: ["R$ 1.200 por mês"],
-    periodo: ["Meio período"],
-    jornada: ["De segunda à sexta-feira"],
-    description: `
+                type: ["Aprendiz"],
+                salary: ["R$ 1.200 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda à sexta-feira"],
+                description: `
     <p><strong>O Magazine Luiza está em busca de jovens com perfil organizado, domínio de ferramentas digitais e vontade de crescer profissionalmente na área administrativa.</strong> Essa é uma excelente oportunidade para quem deseja aplicar habilidades práticas em um ambiente colaborativo e inovador.</p>
 
     <h4>Atividades que você vai realizar:</h4>
@@ -1954,7 +1980,7 @@
         <li>Interesse em áreas como comercial, financeiro ou gestão de estoque</li>
     </ul>
     `
-}
+            }
 
         ];
 
@@ -1965,15 +1991,15 @@
         function renderJobList() {
             jobList.innerHTML = '';
             jobs.forEach(job => {
-            const card = document.createElement('div');
-            card.className = 'indeed-job-card' + (job.id === selectedJobId ? ' selected' : '');
-            card.tabIndex = 0;
-            card.setAttribute('role', 'button');
-            card.setAttribute('aria-label', job.title + ' em ' + job.company);
-            card.onclick = () => selectJob(job.id);
-            card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') selectJob(job.id); };
+                const card = document.createElement('div');
+                card.className = 'indeed-job-card' + (job.id === selectedJobId ? ' selected' : '');
+                card.tabIndex = 0;
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-label', job.title + ' em ' + job.company);
+                card.onclick = () => selectJob(job.id);
+                card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') selectJob(job.id); };
 
-            card.innerHTML = `
+                card.innerHTML = `
             <div class="indeed-job-title">${job.title}</div>
             <div class="indeed-job-sub">${job.company} – ${job.location}</div>
             <div class="indeed-job-benefits">
@@ -1990,7 +2016,7 @@
             </div>
             ` : ''}
             `;
-            jobList.appendChild(card);
+                jobList.appendChild(card);
             });
 
             // PAGINATION COMPONENT
@@ -2002,33 +2028,33 @@
 
             // Previous arrow (disabled on first page)
             if (currentPage > 1) {
-            paginationHTML += `<a href="pagina${currentPage - 1}.html" class="page-button" aria-label="Página anterior" tabindex="0">‹</a>`;
+                paginationHTML += `<a href="pagina${currentPage - 1}.html" class="page-button" aria-label="Página anterior" tabindex="0">‹</a>`;
             }
 
             // Page numbers
             for (let i = 1; i <= totalPages; i++) {
-            if (i === currentPage) {
-            paginationHTML += `<span class="page-button active" aria-current="page" style="background:#595959;color:#fff;border:1px solid #595959;">${i}</span>`;
-            } else if (i === 2) {
-            paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=10&vjk=37115f5196faf2db" class="page-button" tabindex="0">${i}</a>`;
-            } else if (i === 3) {
-            paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=20&vjk=33a21e64e4cf8a64" class="page-button" tabindex="0">${i}</a>`;
-            } else if (i === 4) {
-            paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=30&vjk=31998b5eee2dd5eb" class="page-button" tabindex="0">${i}</a>`;
-            } else {
-            paginationHTML += `<a href="pagina${i}.html" class="page-button" tabindex="0">${i}</a>`;
-            }
+                if (i === currentPage) {
+                    paginationHTML += `<span class="page-button active" aria-current="page" style="background:#595959;color:#fff;border:1px solid #595959;">${i}</span>`;
+                } else if (i === 2) {
+                    paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=10&vjk=37115f5196faf2db" class="page-button" tabindex="0">${i}</a>`;
+                } else if (i === 3) {
+                    paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=20&vjk=33a21e64e4cf8a64" class="page-button" tabindex="0">${i}</a>`;
+                } else if (i === 4) {
+                    paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=30&vjk=31998b5eee2dd5eb" class="page-button" tabindex="0">${i}</a>`;
+                } else {
+                    paginationHTML += `<a href="pagina${i}.html" class="page-button" tabindex="0">${i}</a>`;
+                }
             }
 
             // Next arrow (disabled on last page)
             if (currentPage < totalPages) {
-            paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=10&vjk=37115f5196faf2db" class="page-button" aria-label="Próxima página" tabindex="0" style="display:flex;align-items:center;justify-content:center;">
+                paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=10&vjk=37115f5196faf2db" class="page-button" aria-label="Próxima página" tabindex="0" style="display:flex;align-items:center;justify-content:center;">
             <svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;">
             <path d="M8.818 7.7574c-.3905-.3905-.3905-1.0237 0-1.4142.3906-.3905 1.0237-.3905 1.4143 0l4.942 4.9421.0077.0076a.9966.9966 0 01.2929.7071.9966.9966 0 01-.2929.7071l-.0077.0076-4.942 4.9421c-.3906.3905-1.0237.3905-1.4143 0-.3905-.3905-.3905-1.0237 0-1.4142L13.0606 12 8.818 7.7574z"></path>
             </svg>
             </a>`;
             } else {
-            paginationHTML += `<span class="page-button page-button--disabled" aria-disabled="true">›</span>`;
+                paginationHTML += `<span class="page-button page-button--disabled" aria-disabled="true">›</span>`;
             }
 
             paginationHTML += `</div>`;
@@ -2536,9 +2562,12 @@
                 <a href="https://br.indeed.com/about" class="indeed-footer-link">Sobre o Indeed</a>
                 <a href="https://br.indeed.com/help" class="indeed-footer-link">Ajuda</a>
                 <span class="indeed-footer-copyright">© 2025 Indeed</span>
-                <a href="https://br.indeed.com/esg/accessibility?hl=pt" class="indeed-footer-link">Acessibilidade no Indeed</a>
-                <a href="https://hrtechprivacy.com/pt/brands/indeed#privacypolicy" class="indeed-footer-link">Centro de privacidade e preferências de anúncios</a>
-                <a href="https://br.indeed.com/legal?hl=pt&from=gnav-jobsearch--indeedmobile" class="indeed-footer-link">Termos</a>
+                <a href="https://br.indeed.com/esg/accessibility?hl=pt" class="indeed-footer-link">Acessibilidade no
+                    Indeed</a>
+                <a href="https://hrtechprivacy.com/pt/brands/indeed#privacypolicy" class="indeed-footer-link">Centro de
+                    privacidade e preferências de anúncios</a>
+                <a href="https://br.indeed.com/legal?hl=pt&from=gnav-jobsearch--indeedmobile"
+                    class="indeed-footer-link">Termos</a>
             </nav>
         </div>
     </footer>
