@@ -1,0 +1,2604 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagas de Jovem Aprendiz em Ribeirão Preto, SP | Indeed</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./img/favicon.ico">
+
+    <style>
+        :root {
+            --azul-logo: #2557A7;
+            --cinza-bg: #f3f2f1;
+            --cinza-chip: #e4e2e0;
+            --cinza-borda: #c8d1f2;
+            --cinza-texto: #595959;
+            --fonte: 'Noto Sans', Arial, sans-serif;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--fonte);
+            background-color: #ffffff;
+            color: #2c2c2c;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .main-header {
+            background: #fff;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            border-bottom: 1px solid #e4e2e0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .main-header .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--azul-logo);
+            text-decoration: none;
+            letter-spacing: -1px;
+            font-family: var(--fonte);
+        }
+
+        .main-header .header-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .main-header .header-link {
+            font-size: 14px;
+            color: #2c2c2c;
+            text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            transition: background .2s;
+            font-family: var(--fonte);
+        }
+
+        .main-header .header-link:hover {
+            background: var(--cinza-bg);
+        }
+
+        /* Search Bar */
+        .search-bar-section {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 28px 0 18px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar-form {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            max-width: 700px;
+            align-items: center;
+            background: #fff;
+        }
+
+        .search-input-group {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 12px 12px 38px;
+            border: 1px solid var(--cinza-chip);
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: var(--fonte);
+            background: #fff;
+            outline: none;
+            transition: border .2s;
+            color: #222;
+        }
+
+        .search-input:focus {
+            border-color: var(--azul-logo);
+        }
+
+        .search-icon,
+        .location-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            fill: #767676;
+            pointer-events: none;
+        }
+
+        .search-btn {
+            background: var(--azul-logo);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: var(--fonte);
+            font-weight: 700;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background .2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            min-width: 120px;
+        }
+
+        .search-btn:hover {
+            background: #174ea6;
+        }
+
+        /* Filtros */
+        .filters-container {
+            display: flex;
+            align-items: center;
+            background: var(--cinza-bg);
+            padding: 14px 0 10px 0;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-chip {
+            background: var(--cinza-chip);
+            color: var(--cinza-texto);
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            padding: 6px 12px 6px 16px;
+            cursor: pointer;
+            transition: background .2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-family: var(--fonte);
+            position: relative;
+        }
+
+        .filter-chip .chip-arrow {
+            font-size: 12px;
+            margin-left: 4px;
+            color: #767676;
+        }
+
+        .filter-chip:hover {
+            background: #d6d4d2;
+        }
+
+        /* Layout principal */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            padding: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        /* Lista de vagas */
+        .job-listings {
+            flex: 1.1;
+            min-width: 0;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .job-card {
+            background: #fff;
+            border: 1px solid var(--cinza-borda);
+            border-radius: 10px;
+            padding: 18px 20px 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            box-sizing: border-box;
+            transition: box-shadow .2s, border-color .2s;
+        }
+
+        .job-card:hover {
+            box-shadow: 0 2px 8px rgba(37, 87, 167, 0.08);
+            border-color: var(--azul-logo);
+        }
+
+        .job-title-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2px;
+        }
+
+        .job-title {
+            color: var(--azul-logo);
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .easy-apply {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: var(--azul-logo);
+            font-weight: 500;
+            gap: 4px;
+            margin-bottom: 2px;
+        }
+
+        .easy-apply .arrow {
+            font-size: 15px;
+            margin-right: 2px;
+            color: var(--azul-logo);
+            display: inline-block;
+            transform: translateY(1px);
+        }
+
+        .company-location {
+            color: var(--cinza-texto);
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .tags {
+            margin-top: 4px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--cinza-chip);
+            color: #000;
+            font-size: 13px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* Painel da vaga */
+        .job-panel {
+            flex: 2;
+            min-width: 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 32px 28px 24px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            box-sizing: border-box;
+            max-width: 600px;
+        }
+
+        .job-panel-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--azul-logo);
+            margin-bottom: 2px;
+        }
+
+        .job-panel-company-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            color: var(--cinza-texto);
+            margin-bottom: 2px;
+        }
+
+        .job-panel-company-row a {
+            color: var(--azul-logo);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .company-rating {
+            background: var(--cinza-chip);
+            color: #222;
+            font-size: 13px;
+            border-radius: 6px;
+            padding: 2px 8px;
+            margin-left: 2px;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .job-panel-location {
+            font-size: 15px;
+            color: var(--cinza-texto);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .job-panel-btns {
+            display: flex;
+            gap: 12px;
+            margin: 8px 0 0 0;
+            align-items: center;
+        }
+
+        .apply-btn {
+            background: var(--azul-logo);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: var(--fonte);
+            font-weight: 700;
+            padding: 10px 24px;
+            cursor: pointer;
+            transition: background .2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .apply-btn:hover {
+            background: #174ea6;
+        }
+
+        .icon-btn {
+            background: var(--cinza-chip);
+            border: none;
+            border-radius: 6px;
+            padding: 8px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background .2s;
+            color: #222;
+            font-size: 16px;
+        }
+
+        .icon-btn:hover {
+            background: #d6d4d2;
+        }
+
+        .job-panel-section-title {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: #222;
+        }
+
+        .job-panel-details {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+
+        .detail-chip {
+            background: var(--cinza-chip);
+            color: #222;
+            border-radius: 6px;
+            font-size: 13px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .job-panel-benefits {
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+
+        .job-panel-benefits ul {
+            margin: 0 0 0 18px;
+            padding: 0;
+            color: #222;
+            font-size: 15px;
+        }
+
+        .job-panel-benefits-desc {
+            color: var(--cinza-texto);
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 1024px) {
+            .main-content {
+                flex-direction: column;
+                gap: 24px;
+                max-width: 100%;
+                padding: 18px 6px;
+            }
+
+            .job-listings,
+            .job-panel {
+                max-width: 100%;
+            }
+
+            .job-panel {
+                padding: 22px 8px 16px 8px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .main-header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 8px;
+                gap: 8px;
+            }
+
+            .search-bar-section {
+                padding: 12px 0 8px 0;
+            }
+
+            .main-content {
+                padding: 8px 2px;
+            }
+
+            .job-panel {
+                padding: 12px 4px 10px 4px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .search-bar-form {
+                flex-direction: column;
+                gap: 8px;
+                width: 100%;
+            }
+
+            .search-btn {
+                width: 100%;
+                min-width: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="main-header indeed-header">
+        <div class="indeed-header-left">
+            <a href="https://br.indeed.com/?from=gnav-homepage" class="indeed-logo" aria-label="Indeed" style="color: rgb(0, 58, 155); margin-right: 32px;">
+                <svg width="75" height="20" viewBox="0 0 75 20" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    focusable="false" aria-hidden="true">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M74.613 3.458c-.265-.297-.62-.448-1.1-.448-.48 0-.846.159-1.101.487-.255.317-.387.793-.387 1.417v4.524c-.59-.636-1.203-1.092-1.825-1.399a4.568 4.568 0 0 0-1.356-.397 6.917 6.917 0 0 0-.937-.06c-1.559 0-2.822.536-3.791 1.608-.958 1.072-1.438 2.56-1.438 4.472 0 .904.123 1.747.367 2.52.246.772.59 1.448 1.06 2.022a4.975 4.975 0 0 0 1.67 1.33 4.766 4.766 0 0 0 2.089.465c.345 0 .672-.029.977-.088.205-.03.397-.08.592-.14a5.086 5.086 0 0 0 1.335-.674 7.8 7.8 0 0 0 1.253-1.15v.297c0 .565.143.992.418 1.3.286.297.643.455 1.07.455.438 0 .794-.149 1.07-.435.273-.298.417-.734.417-1.318V4.758c.004-.567-.128-1.004-.383-1.3Zm-3.169 12.477c-.275.575-.643 1.002-1.09 1.28-.46.279-.96.416-1.51.416h-.01a2.79 2.79 0 0 1-1.509-.435c-.459-.298-.825-.734-1.089-1.309-.264-.585-.396-1.29-.396-2.123 0-.784.121-1.477.377-2.062.245-.596.601-1.052 1.05-1.368.46-.328.97-.477 1.548-.477h.03c.541 0 1.04.158 1.499.465.459.308.825.756 1.1 1.34.275.585.408 1.29.408 2.102 0 .872-.133 1.597-.408 2.171Zm-9.896.13c-.194-.168-.459-.258-.785-.258-.296 0-.52.07-.683.199-.398.356-.713.644-.96.852-.242.199-.52.397-.813.584a3.27 3.27 0 0 1-.896.399 3.798 3.798 0 0 1-1.03.128c-.081 0-.163 0-.235-.01a2.829 2.829 0 0 1-1.303-.397c-.47-.267-.836-.662-1.122-1.179-.275-.536-.418-1.15-.427-1.845h6.145c.825 0 1.466-.12 1.915-.337.46-.239.683-.735.683-1.498 0-.833-.224-1.646-.662-2.45-.438-.795-1.09-1.449-1.976-1.953-.878-.506-1.927-.754-3.16-.754h-.091c-.907.01-1.743.16-2.486.437a5.54 5.54 0 0 0-1.969 1.269 5.677 5.677 0 0 0-1.2 1.994 7.49 7.49 0 0 0-.42 2.518c0 1.925.562 3.432 1.682 4.552 1.06 1.062 2.527 1.618 4.391 1.677.103.01.213.01.327.01.876 0 1.66-.11 2.342-.337.683-.228 1.244-.507 1.694-.843.446-.347.783-.704 1.007-1.07.224-.367.337-.695.337-.963 0-.31-.1-.557-.305-.725Zm-7.336-5.605c.5-.526 1.141-.784 1.926-.784h.012c.814 0 1.477.258 1.976.773.5.517.795 1.3.867 2.35h-5.698c.101-1.03.408-1.814.917-2.339Zm-6.045 5.346c-.305 0-.529.07-.692.198-.387.357-.713.645-.958.853-.245.198-.51.397-.806.584-.294.179-.591.318-.906.398a3.742 3.742 0 0 1-1.03.128c-.08 0-.162 0-.234-.01a2.841 2.841 0 0 1-1.304-.396 2.932 2.932 0 0 1-1.11-1.18c-.286-.535-.429-1.15-.44-1.844h6.155c.815 0 1.456-.12 1.915-.338.448-.238.674-.734.674-1.497 0-.834-.215-1.647-.653-2.45-.438-.795-1.1-1.45-1.976-1.954-.878-.505-1.937-.753-3.158-.753h-.103c-.906.01-1.731.16-2.486.437a5.383 5.383 0 0 0-1.957 1.268 5.54 5.54 0 0 0-1.212 1.994 7.451 7.451 0 0 0-.42 2.518c0 1.925.572 3.432 1.692 4.552 1.06 1.063 2.517 1.618 4.382 1.677.112.01.212.01.326.01.886 0 1.661-.109 2.343-.336.682-.229 1.244-.507 1.691-.843.46-.348.785-.704 1.01-1.07.223-.367.337-.695.337-.964 0-.307-.103-.555-.296-.723-.202-.17-.469-.26-.784-.26Zm-6.562-5.346c.499-.526 1.142-.784 1.927-.784h.011c.814 0 1.477.258 1.976.773.509.517.795 1.3.877 2.35h-5.707c.112-1.03.419-1.814.916-2.339ZM6.547 17.969v-7.301c.212.02.417.029.631.029a5.514 5.514 0 0 0 2.792-.744v8.014c0 .685-.163 1.19-.48 1.528-.315.336-.733.504-1.242.504-.5 0-.897-.168-1.223-.515-.315-.336-.478-.842-.478-1.515Zm29.6-14.51c-.265-.298-.631-.449-1.09-.449-.48 0-.846.159-1.102.487-.264.317-.387.793-.387 1.417v4.524c-.59-.636-1.2-1.092-1.824-1.399a4.644 4.644 0 0 0-1.354-.397 6.901 6.901 0 0 0-.938-.06c-1.559 0-2.833.536-3.79 1.608-.959 1.072-1.438 2.56-1.438 4.472 0 .904.123 1.747.356 2.52a6.03 6.03 0 0 0 1.072 2.022 4.96 4.96 0 0 0 1.67 1.33 4.766 4.766 0 0 0 2.089.465c.336 0 .662-.029.977-.088.205-.03.398-.08.592-.14a5.086 5.086 0 0 0 1.335-.674c.417-.298.827-.685 1.252-1.15v.297c0 .565.144.992.419 1.3.275.297.643.455 1.07.455.417 0 .785-.149 1.06-.435.275-.298.406-.734.406-1.318V4.758c.001-.567-.12-1.004-.374-1.3Zm-3.16 12.476c-.274.575-.642 1.002-1.1 1.28-.448.279-.959.416-1.497.416h-.01c-.55 0-1.05-.149-1.508-.435-.468-.298-.825-.734-1.09-1.309-.264-.585-.397-1.29-.397-2.123 0-.784.123-1.477.366-2.062.254-.596.601-1.052 1.06-1.368.448-.328.968-.477 1.539-.477h.04c.54 0 1.039.158 1.488.465.469.308.835.756 1.11 1.34.264.585.408 1.29.408 2.102 0 .872-.144 1.597-.408 2.171ZM14.995 9.25v.378c.56-.715 1.161-1.23 1.814-1.568.662-.326 1.416-.496 2.272-.496.826 0 1.57.18 2.22.526a3.35 3.35 0 0 1 1.457 1.488c.215.376.348.784.408 1.221.061.426.091.981.091 1.656v5.685c0 .614-.153 1.08-.438 1.387-.284.317-.662.475-1.12.475-.47 0-.846-.158-1.142-.484-.296-.319-.439-.783-.439-1.378v-5.093c0-1.011-.143-1.784-.428-2.32-.285-.534-.867-.803-1.72-.803-.562 0-1.07.168-1.53.486a2.826 2.826 0 0 0-1.018 1.35c-.153.455-.224 1.298-.224 2.56v3.818c0 .624-.152 1.08-.447 1.399-.296.307-.672.465-1.142.465-.459 0-.827-.158-1.121-.484-.296-.319-.438-.783-.438-1.378V9.3c0-.584.133-1.02.398-1.3.254-.286.61-.436 1.07-.436.275 0 .52.06.743.189.224.128.406.317.54.574.132.258.194.567.194.923ZM6.566.473c2.12-.744 4.535-.704 6.348.822.337.307.723.695.876 1.15.184.577-.641-.06-.754-.139-.592-.377-1.182-.694-1.844-.912-3.566-1.07-6.94.864-9.038 3.87C1.278 6.59.707 7.99.24 9.526c-.052.168-.092.387-.184.535-.093.17-.04-.455-.04-.476.07-.635.203-1.25.368-1.864.967-3.273 3.106-6 6.183-7.25Zm4.106 5.881a2.517 2.517 0 1 1-5.032 0 2.517 2.517 0 1 1 5.032 0Z"
+                        fill="rgb(0, 58, 155)"></path>
+                </svg>
+            </a>
+            <nav class="indeed-nav">
+                <a href="https://br.indeed.com/?from=gnav-homepage" class="indeed-link">Página inicial</a>
+                <a href="https://br.indeed.com/companies?from=gnav-jobsearch--indeedmobile" class="indeed-link">Avaliações de Empresas</a>
+                <a href="https://br.indeed.com/career/salaries?from=gnav-compui" class="indeed-link">Cargos e salários</a>
+            </nav>
+        </div>
+        <div class="indeed-header-right">
+            <a href="https://secure.indeed.com/auth?hl=pt_BR&co=BR&continue=https%3A%2F%2Fbr.indeed.com%2F%3Ffrom%3Dgnav-homepage&tmpl=desktop&from=gnav-util-homepage&jsContinue=https%3A%2F%2Fonboarding.indeed.com%2Fonboarding%3Fhl%3Dpt_BR%26co%3DBR%26from%3Dgnav-homepage&empContinue=https%3A%2F%2Faccount.indeed.com%2Fmyaccess" class="indeed-link indeed-login">Acessar</a>
+            <span class="indeed-separator"></span>
+            <a href="https://br.indeed.com/recrutamento?co=BR&hl=pt&from=gnav-menu-homepage" class="indeed-link">Empresas/Anunciar vagas</a>
+        </div>
+    </header>
+    <style>
+        .indeed-header {
+            background: #fff;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+            border-bottom: 1px solid #e4e2e0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .indeed-header-left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .indeed-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-right: 8px;
+        }
+
+        .indeed-nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+        }
+
+        /* Remove hover azul do nav */
+        .indeed-nav .indeed-link:hover:not(.active) {
+            color: #2c2c2c;
+        }
+
+        /* Remove negrito do botão Página inicial */
+        .indeed-nav .indeed-link:first-child {
+            color: #2c2c2c;
+            font-weight: 400;
+        }
+
+        /* Sublinhado fixo para Página inicial */
+        .indeed-nav .indeed-link:first-child::after,
+        .indeed-nav .indeed-link.active::after {
+            opacity: 1;
+        }
+
+        .indeed-link {
+            position: relative;
+            color: #2c2c2c;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none;
+            padding: 0 0 0 0;
+            background: none;
+            border: none;
+            outline: none;
+            transition: color .2s;
+            font-family: inherit;
+            display: inline-block;
+            line-height: 56px;
+        }
+
+        .indeed-link::after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0px;
+            width: 100%;
+            height: 2px;
+            background: #2557A7;
+            border-radius: 1px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity .2s;
+        }
+
+        .indeed-link.active::after,
+        .indeed-link:hover::after {
+            opacity: 1;
+        }
+
+        .indeed-link.active {
+            color: #2c2c2c;
+            font-weight: 700;
+        }
+
+        .indeed-link {
+            position: relative;
+            color: #2c2c2c;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none;
+            padding: 0 0 0 0;
+            background: none;
+            border: none;
+            outline: none;
+            transition: color .2s;
+            font-family: inherit;
+            display: inline-block;
+            line-height: 56px;
+        }
+
+        /* Remover hover azul dos links do nav */
+        .indeed-nav .indeed-link:hover:not(.indeed-login):not(.active) {
+            color: #2c2c2c;
+        }
+
+        .indeed-link.active {
+            color: #2c2c2c;
+            font-weight: 700;
+        }
+
+        .indeed-link.active::after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 2px;
+            background: #2557A7;
+            border-radius: 1px;
+            width: 100%;
+        }
+
+        .indeed-header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .indeed-login {
+            color: #2557A7;
+            font-weight: bold;
+        }
+
+        .indeed-separator {
+            display: inline-block;
+            width: 1px;
+            height: 32px;
+            background: #d4d2d0;
+            margin: 0 16px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 700px) {
+            .indeed-header {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 8px;
+                gap: 8px;
+            }
+
+            .indeed-header-left,
+            .indeed-header-right {
+                gap: 12px;
+            }
+
+            .indeed-separator {
+                height: 24px;
+                margin: 0 8px;
+            }
+        }
+    </style>
+
+    <!-- Search Section (Indeed style) -->
+    <section class="indeed-search-section">
+        <form class="indeed-search-bar" autocomplete="off">
+
+            <div class="search-input-group" style="display: flex; align-items: center; flex: 1;">
+                <span class="search-icon" aria-hidden="true"
+                    style="display: flex; align-items: center; margin-right: 10px;"></span>
+                <svg width="40" height="18" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="7" stroke="#767676" stroke-width="2" />
+                    <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="#767676" stroke-width="2"
+                        stroke-linecap="round" />
+                </svg>
+                </span>
+                <input class="search-input" type="text" placeholder="Jovem aprendiz"
+                    aria-label="Cargo, palavra-chave ou empresa" style="flex: 1; min-width: 0; padding-left: 0;">
+            </div>
+            <div class="search-divider"></div>
+
+            <div class="search-input-group" style="display: flex; align-items: center; flex: 1;">
+                <span class="location-icon" aria-hidden="true"
+                    style="display: flex; align-items: center; margin-right: 10px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" fill="#000" viewBox="0 0 24 24"
+                        aria-hidden="true" class="css-8548fo eac13zx0">
+                        <path
+                            d="M12 2C8.13 2 5 5.13 5 9c0 4.5229 5.1954 11.0927 6.6344 12.8256.1934.2329.5378.2329.7312 0C13.8046 20.0927 19 13.5229 19 9c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z">
+                        </path>
+                    </svg>
+                </span>
+                <input class="search-input" type="text" placeholder="ribeirão preto, sp" aria-label="Cidade ou região"
+                    style="flex: 1; min-width: 0; padding-left: 0; margin-left: 40px;">
+            </div>
+            <button class="search-btn" type="submit">Achar vagas</button>
+            <style>
+                .search-btn:hover {
+                    background: #164081 !important;
+                }
+            </style>
+        </form>
+        <div class="indeed-filters">
+            <button class="filter-btn">Salário <span class="chip-arrow">&#9660;</span></button>
+            <button class="filter-btn filter-btn--active">Até 25 quilômetros <span
+                    class="chip-arrow">&#9660;</span></button>
+            <button class="filter-btn">Empresa <span class="chip-arrow">&#9660;</span></button>
+            <button class="filter-btn">Tipo de vaga <span class="chip-arrow">&#9660;</span></button>
+            <button class="filter-btn">Data de publicação <span class="chip-arrow">&#9660;</span></button>
+            <button class="filter-btn">Remoto</button>
+        </div>
+        <div style="width:100%;height:1px;background:#e4e2e0;margin:12px 0 0 0;"></div>
+    </section>
+    <style>
+        .indeed-search-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 32px;
+            gap: 16px;
+            font-family: 'Noto Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 400;
+        }
+
+        .indeed-search-bar {
+            display: flex;
+            align-items: center;
+            height: 56px;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            background: #fff;
+            box-shadow: 0 0.5rem 1rem 0 rgba(45, 45, 45, 0.12), 0 0.25rem 0.5rem 0 rgba(45, 45, 45, 0.16), 0 0 0.125rem 0 rgba(45, 45, 45, 0.2);
+            overflow: hidden;
+            padding: 0 12px;
+            width: 800px;
+            max-width: 100%;
+            gap: 0;
+            border-color: #767676;
+        }
+
+        .indeed-search-bar .search-icon,
+        .indeed-search-bar .location-icon {
+            color: #767676;
+            font-size: 18px;
+            margin-right: 8px;
+            display: flex;
+            align-items: center;
+            min-width: 18px;
+        }
+
+        .indeed-search-bar .location-icon {
+            margin-left: 0;
+            margin-right: 8px;
+        }
+
+        .indeed-search-bar .search-input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 16px;
+            font-family: inherit;
+            background: transparent;
+            color: #222;
+            min-width: 0;
+            padding: 0;
+        }
+
+        .indeed-search-bar .search-divider {
+            width: 1px;
+            height: 24px;
+            background: #e4e2e0;
+            margin: 0 16px;
+        }
+
+        .indeed-search-bar .search-btn {
+            background: #2557A7;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            height: 40px;
+            padding: 0 20px;
+            margin-left: 16px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background .2s;
+            white-space: nowrap;
+        }
+
+        .indeed-search-bar .search-btn:hover {
+            background: #174ea6;
+        }
+
+        .indeed-filters {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            gap: 8px;
+            width: 800px;
+            max-width: 100%;
+        }
+
+        .filter-btn {
+            background: #e4e2e0;
+            color: #2d2d2d;
+            border: 0;
+            box-sizing: border-box;
+            justify-content: center;
+            margin: 0 .5rem .5rem 0;
+            min-height: 41px;
+            min-width: 100px;
+            align-items: center;
+            background-color: #e4e2e0;
+            border-radius: .5rem;
+            color: #2d2d2d;
+            cursor: pointer;
+            display: flex;
+            font-size: .75rem;
+            font-weight: 400;
+            letter-spacing: 0;
+            line-height: 1.34;
+            max-width: 228px;
+            outline: 0;
+            position: relative;
+            text-decoration: none !important;
+
+        }
+
+        .filter-btn .chip-arrow {
+            font-size: 12px;
+            color: #767676;
+        }
+
+        .filter-btn {
+            cursor: pointer;
+            transition: background 0.18s, border-color 0.18s;
+            border: 1px solid transparent;
+        }
+
+        .filter-btn:hover:not(.filter-btn--active),
+        .filter-btn:focus-visible:not(.filter-btn--active) {
+            background: #d4d2d0;
+            border-color: #bfc0c2;
+            outline: none;
+        }
+
+        .filter-btn--active {
+            background: #595959;
+            color: #fff;
+        }
+
+        @media (max-width: 900px) {
+
+            .indeed-search-bar,
+            .indeed-filters {
+                width: 90vw;
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .indeed-search-bar {
+                flex-direction: column;
+                align-items: stretch;
+                height: auto;
+                padding: 12px 8px;
+                gap: 8px;
+            }
+
+            .indeed-search-bar .search-divider {
+                display: none;
+            }
+
+            .indeed-search-bar .search-btn {
+                margin-left: 0;
+                margin-top: 8px;
+                width: 100%;
+                min-width: 0;
+            }
+
+            .indeed-filters {
+                width: 100%;
+                gap: 6px;
+            }
+        }
+    </style>
+
+    <!-- Layout principal Indeed customizado -->
+    <div class="indeed-flex-container">
+        <!-- Coluna esquerda: Lista de vagas -->
+        <div class="indeed-job-list" id="jobList">
+            <!-- Cards de vagas serão inseridos via JS -->
+        </div>
+
+        
+        <!-- Coluna direita: Detalhes da vaga -->
+        <div class="indeed-job-detail" id="jobDetail">
+            <!-- Detalhes da vaga selecionada aparecem aqui -->
+            <div class="indeed-job-detail-empty">
+                <span style="color:#bbb;font-size:18px;">Selecione uma vaga para ver os detalhes</span>
+            </div>
+        </div>
+    </div>
+    <style>
+        .indeed-flex-container {
+            display: flex;
+            gap: 24px;
+            margin-top: 32px;
+            min-height: 500px;
+            font-family: 'Noto Sans', Arial, sans-serif;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .indeed-job-list {
+            width: 40%;
+            min-width: 280px;
+        }
+
+        .indeed-job-card {
+            background: #fff;
+            border: 1px solid #cfd0d1;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: border .2s, box-shadow .2s;
+            position: relative;
+        }
+
+        .indeed-job-card.selected {
+            border: 1px solid #2557a7;
+            box-shadow: 0 .125rem .25rem #00000014;
+        }
+
+        .indeed-job-title {
+            font-weight: bold;
+            font-size: 17px;
+            margin-bottom: 4px;
+            color: #222;
+        }
+
+        .indeed-job-sub {
+            color: #444;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .indeed-job-benefits {
+            margin-bottom: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .indeed-job-benefit-tag {
+            background: #f3f4f6;
+            border-radius: 6px;
+            padding: 4px 8px;
+            margin: 2px 2px 2px 0;
+            font-size: 13px;
+            color: #333;
+            display: inline-block;
+        }
+
+        .indeed-easy-apply {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            color: #2557A7;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 4px;
+            transition: text-decoration .2s;
+        }
+
+        .indeed-easy-apply svg {
+            vertical-align: middle;
+            margin-right: 2px;
+        }
+
+        .indeed-easy-apply:hover {
+            text-decoration: underline;
+        }
+
+        .indeed-job-detail {
+            width: 60%;
+            min-width: 320px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(37, 87, 167, 0.08);
+            padding: 20px 28px 28px 28px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border: 1px solid #e4e2e0;
+            font-family: 'Noto Sans', sans-serif;
+            overflow-y: auto;
+            max-height: 80vh;
+        }
+
+        .indeed-detail-header {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .indeed-detail-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2557A7;
+            margin: 0 0 4px 0;
+            line-height: 1.2;
+        }
+
+        .indeed-detail-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #444;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .indeed-detail-meta-company {
+            font-weight: 600;
+        }
+
+        .indeed-detail-meta-location {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #767676;
+            font-size: 0.98rem;
+        }
+
+        .indeed-detail-btn-row {
+            display: flex;
+            gap: 12px;
+            margin: 18px 0 0 0;
+            align-items: center;
+        }
+
+        .indeed-detail-apply-btn {
+            background: #2557A7;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 12px 28px;
+            cursor: pointer;
+            transition: background .2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .indeed-detail-apply-btn:hover {
+            background: #174ea6;
+        }
+
+        .indeed-detail-icon-btn {
+            background: #f3f4f6;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background .2s;
+            color: #222;
+            font-size: 1.1rem;
+        }
+
+        .indeed-detail-icon-btn:hover {
+            background: #e4e2e0;
+        }
+
+        .indeed-detail-section {
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid #e4e2e0;
+        }
+
+        .indeed-detail-section-title {
+            font-weight: bold;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            color: #222;
+            letter-spacing: 0.01em;
+        }
+
+        .indeed-detail-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .indeed-detail-badge {
+            background: #e4e2e0;
+            color: #2557A7;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            padding: 6px 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+
+        .indeed-detail-icon {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 4px;
+            font-size: 1.1em;
+            vertical-align: middle;
+        }
+
+        .indeed-detail-list {
+            margin: 0 0 0 0;
+            padding: 0;
+            color: #222;
+            font-size: 1rem;
+            list-style: none;
+        }
+
+        .indeed-detail-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 22px;
+            line-height: 1.6;
+        }
+
+        .indeed-detail-list li::before {
+            content: '';
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background: #2557A7;
+            border-radius: 50%;
+            position: absolute;
+            left: 6px;
+            top: 10px;
+        }
+
+        .indeed-detail-benefits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .indeed-detail-benefit-badge {
+            background: #f3f4f6;
+            color: #222;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            padding: 6px 12px;
+            margin-bottom: 4px;
+            display: inline-block;
+        }
+
+        .indeed-detail-benefits-desc {
+            color: #767676;
+            font-size: 0.98rem;
+            margin-bottom: 4px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .indeed-job-detail {
+                width: 100%;
+                min-width: 0;
+                padding: 16px 6px 18px 6px;
+                max-height: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .indeed-job-detail {
+                padding: 10px 2px 12px 2px;
+                border-radius: 0;
+            }
+
+            .indeed-detail-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        .indeed-job-detail-empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            min-height: 300px;
+        }
+
+        .indeed-detail-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2557A7;
+            margin-bottom: 8px;
+        }
+
+        .indeed-detail-company-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #444;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .indeed-detail-location {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #444;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .indeed-detail-location svg {
+            vertical-align: middle;
+        }
+
+        .indeed-detail-btn-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            align-items: center;
+        }
+
+        .indeed-detail-apply-btn {
+            background: #2557A7;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 10px 24px;
+            cursor: pointer;
+            transition: background .2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .indeed-detail-apply-btn:hover {
+            background: #174ea6;
+        }
+
+        .indeed-detail-icon-btn {
+            background: #f3f4f6;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background .2s;
+            color: #222;
+            font-size: 16px;
+        }
+
+        .indeed-detail-icon-btn:hover {
+            background: #e4e2e0;
+        }
+
+        .indeed-detail-section {
+            margin-bottom: 18px;
+        }
+
+        .indeed-detail-section-title {
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: #222;
+        }
+
+        .indeed-detail-list {
+            margin: 0 0 0 18px;
+            padding: 0;
+            color: #222;
+            font-size: 15px;
+            list-style: none;
+        }
+
+        .indeed-detail-list li {
+            margin-bottom: 4px;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .indeed-detail-list li::before {
+            content: '•';
+            color: #2557A7;
+            position: absolute;
+            left: 0;
+            font-size: 18px;
+            top: 0;
+            line-height: 1;
+        }
+
+        @media (max-width: 900px) {
+            .indeed-flex-container {
+                flex-direction: column;
+                gap: 18px;
+                min-height: 0;
+            }
+
+            .indeed-job-list,
+            .indeed-job-detail {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .indeed-job-detail {
+                min-height: 300px;
+                padding: 16px;
+            }
+        }
+    </style>
+    <style>
+        /* Torna o painel de detalhes da vaga fixo na rolagem (sticky) */
+        .indeed-job-detail {
+            position: sticky;
+            top: 32px;
+            align-self: flex-start;
+            /* Garante que o painel não ultrapasse o rodapé */
+            max-height: calc(100vh - 48px);
+            overflow-y: auto;
+        }
+
+        @media (max-width: 900px) {
+            .indeed-job-detail {
+                position: static;
+                top: unset;
+                max-height: none;
+                overflow-y: visible;
+            }
+        }
+    </style>
+    <script>
+        const jobs = [
+            {
+                id: 109,
+                title: "Jovem Aprendiz – Auxiliar de Loja",
+                company: "Lojas G",
+                companyUrl: "https://lojasg.gupy.io/",
+                rating: 4.0,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-transporte",
+                    "Uniforme da loja",
+                    "Descontos em produtos da rede",
+                    "Treinamento prático com equipe de loja"
+                ],
+                easyApply: true,
+
+                type: ["Aprendiz"],
+                salary: ["R$ 880 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda a sábado"],
+                description: `
+    <p><strong>Essa é uma oportunidade para jovens que desejam o primeiro contato com o mercado de trabalho em uma grande rede de varejo.</strong> O cargo de Auxiliar de Loja é ideal para quem está iniciando sua trajetória profissional, mesmo sem experiência ou conhecimento técnico.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Organização de prateleiras, araras e áreas comuns da loja</li>
+        <li>Reposição manual de produtos nas gôndolas e vitrines</li>
+        <li>Auxílio no provador, com recolhimento de peças e organização</li>
+        <li>Separação de sacolas, etiquetas e embalagens para uso dos caixas</li>
+        <li>Manutenção da limpeza e aparência visual da loja</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Disposição para atividades físicas e rotineiras</li>
+        <li>Boa postura e educação no atendimento básico ao cliente</li>
+        <li>Comprometimento com pontualidade e cumprimento de tarefas</li>
+        <li>Facilidade para seguir instruções simples e trabalhar em equipe</li>
+    </ul>
+
+    <h4>Diferenciais (não obrigatórios):</h4>
+    <ul>
+        <li>Experiência informal com organização ou vendas em pequenos comércios</li>
+        <li>Interesse em atuar no setor de varejo</li>
+        <li>Boa comunicação com colegas e supervisores</li>
+    </ul>
+    `
+            },
+            {
+                id: 114,
+                title: "Jovem Aprendiz – Assistente Administrativo de Farmácia",
+                company: "Drogão Super",
+                companyUrl: "https://www.drogaosuper.com.br/trabalhe-conosco",
+                rating: 4.4,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-transporte",
+                    "Vale-refeição",
+                    "Plano odontológico",
+                    "Seguro de vida",
+                    "Descontos em medicamentos",
+                    "Treinamento interno e plano de desenvolvimento"
+                ],
+                easyApply: true,
+
+                type: ["Aprendiz"],
+                salary: ["R$ 1.200 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda à sexta-feira"],
+                description: `
+    <p>A Drogão Super está em busca de um(a) jovem com perfil organizado, responsável e com domínio de ferramentas digitais para atuar na área administrativa.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Atualização de planilhas de controle de estoque e movimentação de produtos</li>
+        <li>Cadastro e verificação de informações no sistema interno da farmácia</li>
+        <li>Geração de relatórios simples sobre desempenho de vendas e produtos mais vendidos</li>
+        <li>Organização digital de documentos fiscais e arquivos internos</li>
+        <li>Suporte no atendimento via WhatsApp ou CRM, auxiliando na comunicação com clientes</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Conhecimento intermediário a avançado em Excel (filtros, fórmulas, gráficos e planilhas inteligentes)</li>
+        <li>Domínio de Word para criação de documentos formais e listas de produtos</li>
+        <li>Facilidade com Windows e organização de arquivos por pastas</li>
+        <li>Familiaridade com ferramentas como ChatGPT, Notion ou IA para automação de tarefas</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Experiência com sistemas de atendimento, vendas ou CRM</li>
+        <li>Interesse em áreas como logística, gestão ou comercial</li>
+        <li>Boa comunicação escrita e atenção aos detalhes</li>
+    </ul>
+
+    `
+            },
+            {
+                id: 108,
+                title: "Jovem Aprendiz",
+                company: "Habib’s",
+                companyUrl: "https://habibs.gupy.io/",
+                rating: 4.1,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-transporte",
+                    "Refeição no local",
+                    "Uniforme completo",
+                    "Treinamento com equipe de loja"
+                ],
+                easyApply: true,
+
+                type: ["Aprendiz"],
+                salary: ["R$ 870 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda a sábado"],
+                description: `
+    <p>O Habib’s está contratando jovens para atuar como Auxiliar de Loja, uma oportunidade de iniciar no mercado de trabalho em um ambiente dinâmico e movimentado.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Limpeza e organização das mesas, salão e balcão</li>
+        <li>Montagem de bandejas e auxílio na entrega dos pedidos aos clientes</li>
+        <li>Recolhimento de embalagens usadas e descarte correto de resíduos</li>
+        <li>Separação e organização de utensílios, copos e talheres</li>
+        <li>Suporte à equipe da cozinha em tarefas básicas e repetitivas</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Disposição para tarefas físicas e rotineiras</li>
+        <li>Comprometimento com limpeza e higiene do ambiente</li>
+        <li>Facilidade para seguir orientações simples</li>
+        <li>Disponibilidade para trabalhar em diferentes horários, inclusive à noite</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Experiência informal com serviços domésticos, cozinha ou limpeza</li>
+        <li>Desejo de crescer no setor de alimentação</li>
+        <li>Boa convivência com equipe e postura respeitosa com os clientes</li>
+    </ul>
+    `
+            },
+            {
+                id: 105,
+                title: "Jovem Aprendiz – Atendente de Restaurante",
+                company: "Burger King",
+                companyUrl: "https://trabalheconosco.burgerking.com.br/",
+                rating: 4.2,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-refeição",
+                    "Vale-transporte",
+                    "Refeição no local",
+                    "Treinamento prático com a equipe de loja"
+                ],
+                easyApply: true,
+
+                type: ["Aprendiz"],
+                salary: ["R$ 900 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda a sábado"],
+                description: `
+    <p><strong>O Burger King está com vagas abertas para jovens que desejam dar o primeiro passo profissional atuando como Atendente de Restaurante.</strong> Essa é uma excelente oportunidade para quem ainda não possui formação técnica e está em busca de experiência em ambiente de alto movimento.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Montagem de pedidos seguindo padrão de qualidade e agilidade</li>
+        <li>Abastecimento de embalagens e insumos nas áreas de atendimento</li>
+        <li>Auxílio na limpeza e organização do salão, mesas e banheiros</li>
+        <li>Suporte à equipe de cozinha em tarefas simples e repetitivas</li>
+        <li>Atendimento básico ao cliente, com cordialidade e rapidez</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Disposição para trabalhar em pé, com ritmo acelerado</li>
+        <li>Facilidade para seguir instruções e manter organização</li>
+        <li>Comprometimento com higiene e regras internas</li>
+        <li>Bom relacionamento com equipe e postura educada</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Interesse em trabalhar no setor de alimentação</li>
+        <li>Experiência informal com cozinha, atendimento ou limpeza</li>
+        <li>Agilidade e boa comunicação</li>
+    </ul>
+    `
+            },
+            {
+                id: 104,
+                title: "Jovem Aprendiz – Repositor Geral de Loja",
+                company: "Leroy Merlin",
+                companyUrl: "https://carreiras.leroymerlin.com.br/",
+                rating: 4.4,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-refeição",
+                    "Vale-transporte",
+                    "Uniforme e equipamentos de segurança",
+                    "Treinamento prático em loja"
+                ],
+                easyApply: true,
+
+                type: ["Aprendiz"],
+                salary: ["R$ 880 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda a sábado"],
+                description: `
+    <p><strong>A Leroy Merlin está com oportunidades para jovens que desejam iniciar no mercado de trabalho como Repositor Geral.</strong> Essa vaga é voltada para quem está em busca do primeiro emprego e ainda não possui qualificação técnica ou experiência anterior.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Reposição de produtos nos setores de materiais de construção, jardinagem, ferragens, entre outros</li>
+        <li>Organização de corredores, pallets e prateleiras ao longo do dia</li>
+        <li>Conferência visual de validade, preços e etiquetas dos produtos</li>
+        <li>Separação de caixas vazias e embalagens para descarte</li>
+        <li>Apoio na limpeza e manutenção do setor de vendas</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Boa disposição física para tarefas manuais e em pé</li>
+        <li>Comprometimento com horários e rotinas repetitivas</li>
+        <li>Responsabilidade e atenção às orientações da liderança</li>
+        <li>Postura educada no ambiente de loja</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Experiência informal com organização, estoque ou pequenos comércios</li>
+        <li>Interesse em atuar no setor varejista</li>
+        <li>Boa convivência com colegas de equipe</li>
+    </ul>
+    `
+            },
+            {
+                id: 103,
+                title: "Jovem Aprendiz – Auxiliar de Estoque",
+                company: "Sodimac",
+                companyUrl: "https://sodimac.gupy.io/",
+                rating: 4.3,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-refeição",
+                    "Vale-transporte",
+                    "Treinamento prático com equipe de estoque",
+                    "Uniforme e equipamentos de segurança"
+                ],
+                easyApply: true,
+
+                type: ["Aprendiz"],
+                salary: ["R$ 900 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda a sábado"],
+                description: `
+    <p><strong>Se você está em busca do seu primeiro emprego e tem disposição para atividades práticas, essa vaga pode ser um ótimo começo.</strong> A Sodimac está contratando Jovem Aprendiz para atuar como Auxiliar de Estoque no setor de materiais de construção e acabamento.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Organização de prateleiras, pallets e corredores internos do estoque</li>
+        <li>Separação manual de mercadorias para abastecimento das lojas</li>
+        <li>Auxílio na conferência visual de produtos e etiquetas</li>
+        <li>Limpeza e manutenção do espaço de armazenamento</li>
+        <li>Apoio no descarregamento de caminhões e recebimento de cargas</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Boa disposição física para movimentar produtos e caixas</li>
+        <li>Comprometimento com tarefas simples, porém essenciais</li>
+        <li>Responsabilidade com segurança e organização</li>
+        <li>Capacidade de seguir instruções e trabalhar em equipe</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Interesse em áreas de estoque, almoxarifado ou logística</li>
+        <li>Experiência informal com serviços operacionais ou apoio físico</li>
+        <li>Agilidade, pontualidade e atenção ao ambiente de trabalho</li>
+    </ul>
+    `
+            },
+            {
+                id: 102,
+                title: "Jovem Aprendiz – Repositor de Mercadorias",
+                company: "Carrefour",
+                companyUrl: "https://carrefour.gupy.io/",
+                rating: 4.4,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-refeição",
+                    "Vale-transporte",
+                    "Treinamento prático com equipe de loja",
+                    "Plano de desenvolvimento profissional"
+                ],
+                easyApply: true,
+
+                type: ["Aprendiz"],
+                salary: ["R$ 850 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda a sábado"],
+                description: `
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Reposição manual de produtos nas gôndolas e prateleiras da loja</li>
+        <li>Conferência visual de etiquetas, validade e organização dos corredores</li>
+        <li>Separação de caixas, organização de carrinhos e pallets de estoque</li>
+        <li>Manutenção da limpeza do setor onde estiver atuando</li>
+        <li>Atendimento simples a clientes, como direcionamento ou localização de produtos</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Disposição para tarefas repetitivas e manuais</li>
+        <li>Comprometimento com horários e regras internas</li>
+        <li>Responsabilidade com organização e postura no ambiente de loja</li>
+        <li>Facilidade para receber orientações e trabalhar em equipe</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Interesse em aprender sobre o dia a dia do varejo</li>
+        <li>Experiência informal em feiras, mercados ou com reposição de produtos</li>
+        <li>Agilidade e atenção nos detalhes</li>
+    </ul>
+    `
+            },
+            {
+                id: 113,
+                title: "Jovem Aprendiz – Assistente Administrativo Digital",
+                company: "Nubank",
+                companyUrl: "https://nubank.gupy.io/",
+                rating: 4.8,
+                location: "Remoto (Home Office ou Híbrido – SP)",
+                benefits: [
+                    "Vale-alimentação",
+                    "Vale-transporte (ou auxílio mobilidade)",
+                    "Trabalho remoto ou híbrido",
+                    "Notebook fornecido pela empresa",
+                    "Plano de carreira e mentorias com profissionais experientes",
+                    "Seguro de vida",
+                    "Gympass"
+                ],
+                easyApply: true,
+
+                type: ["Aprendiz"],
+                salary: ["R$ 1.500 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda à sexta-feira"],
+                description: `
+    <p><strong>Estamos em busca de jovens com perfil criativo, proativo e preparados tecnicamente para colaborar em ambientes digitais de alta performance.</strong> Como Jovem Aprendiz no Nubank, você fará parte de um time que valoriza inovação, autonomia e eficiência, contribuindo com tarefas administrativas por meio de ferramentas modernas.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Organização de documentos e tarefas com uso de plataformas como Notion, Trello ou Google Workspace</li>
+        <li>Atualização e acompanhamento de relatórios internos com Excel (gráficos, validações, fórmulas)</li>
+        <li>Criação de apresentações e documentos para comunicação interna e reuniões de time</li>
+        <li>Automatização de tarefas simples com IA, scripts ou ferramentas de produtividade</li>
+        <li>Interação com equipes por meio de Slack, e-mails e sistemas de CRM</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino médio cursando ou concluído</li>
+        <li>Conhecimento intermediário ou avançado em Excel (PROCV, Tabela Dinâmica, Validação de Dados, etc.)</li>
+        <li>Boa digitação e domínio de Word e PowerPoint</li>
+        <li>Organização com pastas e arquivos no ambiente Windows</li>
+        <li>Familiaridade com ferramentas de IA (como ChatGPT) aplicadas à produtividade</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Experiência com plataformas como Notion, Slack, Trello ou CRMs</li>
+        <li>Interesse em áreas como operações, atendimento digital, marketing ou produto</li>
+        <li>Boa comunicação escrita e capacidade de autogerenciamento</li>
+    </ul>
+    `
+            },
+            {
+                id: 112,
+                title: "Jovem Aprendiz – Assistente de Suporte Administrativo",
+                company: "Ambev",
+                companyUrl: "https://ambev.gupy.io/",
+                rating: 4.6,
+                location: "Ribeirão Preto, SP",
+                benefits: [
+                    "Vale-refeição",
+                    "Vale-transporte",
+                    "Plano de carreira com acompanhamento",
+                    "Seguro de vida",
+                    "Treinamentos técnicos em sistemas internos",
+                    "Plano odontológico",
+                    "Gympass"
+                ],
+                easyApply: true,
+
+                type: ["Aprendiz"],
+                salary: ["R$ 1.350 por mês"],
+                periodo: ["Meio período"],
+                jornada: ["De segunda à sexta-feira"],
+                description: `
+    <p><strong>A Ambev está em busca de jovens com perfil analítico e domínio de ferramentas digitais para atuar em nossa área administrativa.</strong> Essa é uma oportunidade para quem já possui base técnica em informática e deseja aplicar seus conhecimentos em um ambiente corporativo de alto desempenho.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Preenchimento de relatórios operacionais e logísticos com fórmulas avançadas no Excel</li>
+        <li>Atualização de dashboards com indicadores de performance (produção, estoque ou vendas)</li>
+        <li>Organização de documentos digitais e físicos, seguindo padrões internos</li>
+        <li>Utilização de ferramentas de IA para gerar resumos e agilizar tarefas administrativas</li>
+        <li>Interação com equipes por e-mail, CRM e plataformas internas para alinhamento de processos</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Excel intermediário ou avançado (ex: PROCV, Tabela Dinâmica, SOMASE, Validação de Dados)</li>
+        <li>Domínio de Word e PowerPoint para relatórios e apresentações</li>
+        <li>Organização com pastas, arquivos e rotina digital no Windows</li>
+        <li>Conhecimento de ferramentas de IA voltadas à produtividade (ex: ChatGPT, Notion, Copilot)</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Facilidade com interpretação de dados e indicadores</li>
+        <li>Interesse em áreas como logística, controladoria, produção ou backoffice</li>
+        <li>Boa comunicação e postura profissional no ambiente corporativo</li>
+    </ul>
+    `
+            },
+{
+    id: 111,
+    title: "Jovem Aprendiz – Assistente de Gestão Administrativa de Loja",
+    company: "Lojas Renner",
+    companyUrl: "https://lojasrenner.gupy.io/",
+    rating: 4.5,
+    location: "Ribeirão Preto, SP",
+    benefits: [
+        "Vale-refeição",
+        "Vale-transporte",
+        "Desconto em produtos da loja",
+        "Treinamentos internos e mentorias",
+        "Ambiente moderno e colaborativo",
+        "Plano odontológico"
+    ],
+    easyApply: true,
+
+    type: ["Aprendiz"],
+    salary: ["R$ 1.200 por mês"],
+    periodo: ["Meio período"],
+    jornada: ["De segunda à sexta-feira"],
+    description: `
+    <p><strong>A Lojas Renner está em busca de jovens com domínio digital e perfil organizado para apoiar a área administrativa de loja.</strong> Essa é uma oportunidade ideal para quem já possui conhecimentos técnicos e deseja desenvolver habilidades estratégicas no varejo moderno.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Atualização de relatórios de metas e desempenho diário da loja</li>
+        <li>Criação de planilhas no Excel para acompanhamento de indicadores de vendas e produtividade</li>
+        <li>Organização de arquivos digitais (documentos fiscais, cadastros, comprovantes de metas)</li>
+        <li>Suporte no controle de escalas, envio de comunicados e relatórios internos</li>
+        <li>Utilização de ferramentas como PowerPoint, Canva ou IA para criação de materiais de comunicação interna</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Conhecimento intermediário ou avançado em Excel (gráficos, validações, fórmulas, PROCV)</li>
+        <li>Domínio do Word e PowerPoint para relatórios e apresentações</li>
+        <li>Facilidade com organização digital e navegação no ambiente Windows</li>
+        <li>Boa comunicação escrita e responsabilidade com prazos</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Familiaridade com IA (ex: ChatGPT) para geração de ideias e automação de tarefas</li>
+        <li>Experiência com CRM, planilhas colaborativas ou sistemas de loja</li>
+        <li>Interesse em áreas como marketing interno, gestão ou controle de metas</li>
+    </ul>
+    `
+},
+            {
+    id: 110,
+    title: "Jovem Aprendiz – Assistente Administrativo Corporativo",
+    company: "Coca-Cola Andina",
+    companyUrl: "https://cocacolaandina.gupy.io/",
+    rating: 4.6,
+    location: "Ribeirão Preto, SP",
+    benefits: [
+        "Vale-refeição",
+        "Vale-transporte",
+        "Plano de saúde",
+        "Plano odontológico",
+        "Treinamentos internos com certificação",
+        "Plano de carreira estruturado",
+        "Seguro de vida",
+        "Gympass"
+    ],
+    easyApply: true,
+
+    type: ["Aprendiz"],
+    salary: ["R$ 1.300 por mês"],
+    periodo: ["Meio período"],
+    jornada: ["De segunda à sexta-feira"],
+    description: `
+    <p><strong>A Coca-Cola Andina está com vaga aberta para jovens organizados, responsáveis e com domínio de ferramentas digitais, que desejam atuar na área administrativa corporativa.</strong> Essa é uma excelente oportunidade para aplicar conhecimentos técnicos em um ambiente profissional de alto nível, com possibilidade real de desenvolvimento e crescimento.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Preenchimento de planilhas com fórmulas de controle logístico, financeiro ou comercial</li>
+        <li>Geração de relatórios semanais com indicadores de desempenho de equipes e setores</li>
+        <li>Organização e digitalização de documentos em nuvem com estrutura de pastas no Windows</li>
+        <li>Suporte na atualização de cadastros internos e acompanhamento via sistema de CRM</li>
+        <li>Utilização de inteligência artificial (ex: ChatGPT ou Notion AI) para resumos, e-mails e automações leves</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Excel avançado (PROCV, SOMASE, Tabela Dinâmica, Validação de Dados, etc.)</li>
+        <li>Domínio de Word e PowerPoint para criação de relatórios e apresentações internas</li>
+        <li>Boa digitação, escrita formal e organização digital no ambiente Windows</li>
+        <li>Familiaridade com ferramentas de IA aplicadas à produtividade</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Experiência com CRM (ex: RD Station, HubSpot, Pipedrive)</li>
+        <li>Interesse em setores como logística, administração comercial, RH ou controladoria</li>
+        <li>Perfil analítico, comprometido e com boa comunicação escrita</li>
+    </ul>
+    `
+},
+            {
+    id: 101,
+    title: "Jovem Aprendiz – Assistente Administrativo Comercial",
+    company: "Magazine Luiza",
+    companyUrl: "https://carreiras.magazineluiza.com.br/processo-seletivo/",
+    rating: 4.5,
+    location: "Ribeirão Preto, SP",
+    benefits: [
+        "Vale-refeição",
+        "Vale-transporte",
+        "Plano de carreira com acompanhamento",
+        "Treinamento em habilidades administrativas e digitais",
+        "Descontos em produtos da loja",
+    ],
+    easyApply: true,
+
+    type: ["Aprendiz"],
+    salary: ["R$ 1.200 por mês"],
+    periodo: ["Meio período"],
+    jornada: ["De segunda à sexta-feira"],
+    description: `
+    <p><strong>O Magazine Luiza está em busca de jovens com perfil organizado, domínio de ferramentas digitais e vontade de crescer profissionalmente na área administrativa.</strong> Essa é uma excelente oportunidade para quem deseja aplicar habilidades práticas em um ambiente colaborativo e inovador.</p>
+
+    <h4>Atividades que você vai realizar:</h4>
+    <ul>
+        <li>Preenchimento de planilhas com metas diárias e controle de indicadores de vendas</li>
+        <li>Organização e digitalização de documentos administrativos da loja</li>
+        <li>Suporte no cadastro de produtos, atualização de preços e controle de estoque via sistema</li>
+        <li>Geração de relatórios simples no Excel para análise de desempenho comercial</li>
+        <li>Participação em treinamentos internos com foco em tecnologia e gestão</li>
+    </ul>
+
+    <h4>Requisitos obrigatórios:</h4>
+    <ul>
+        <li>Ensino fundamental ou médio cursando ou concluído</li>
+        <li>Excel intermediário ou avançado (filtros, fórmulas, gráficos e validação de dados)</li>
+        <li>Boa digitação e domínio do Word e PowerPoint</li>
+        <li>Familiaridade com ambiente Windows (atalhos, pastas, organização de arquivos)</li>
+        <li>Boa comunicação escrita e atenção a detalhes</li>
+    </ul>
+
+    <h4>Diferenciais:</h4>
+    <ul>
+        <li>Curso de informática ou pacote Office completo</li>
+        <li>Experiência com planilhas, relatórios ou sistemas de loja (mesmo que informal)</li>
+        <li>Interesse em áreas como comercial, financeiro ou gestão de estoque</li>
+    </ul>
+    `
+}
+
+        ];
+
+        const jobList = document.getElementById('jobList');
+        const jobDetail = document.getElementById('jobDetail');
+        let selectedJobId = null;
+
+        function renderJobList() {
+            jobList.innerHTML = '';
+            jobs.forEach(job => {
+            const card = document.createElement('div');
+            card.className = 'indeed-job-card' + (job.id === selectedJobId ? ' selected' : '');
+            card.tabIndex = 0;
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', job.title + ' em ' + job.company);
+            card.onclick = () => selectJob(job.id);
+            card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') selectJob(job.id); };
+
+            card.innerHTML = `
+            <div class="indeed-job-title">${job.title}</div>
+            <div class="indeed-job-sub">${job.company} – ${job.location}</div>
+            <div class="indeed-job-benefits">
+            ${job.benefits.map(b => `<span class="indeed-job-benefit-tag">${b}</span>`).join('')}
+            </div>
+            ${job.easyApply ? `
+            <div style="display: flex; align-items: center; gap: 6px; margin-top: 8px;">
+            <span style="display: flex; align-items: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" fill="#2557A7" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2.3444 4.018c-.1965-.0777-.3948.1082-.33.3093l1.8965 5.8959a.4998.4998 0 00.3711.3353l7.7194 1.4395-7.7194 1.4395a.5002.5002 0 00-.371.3353l-1.8984 5.8964c-.065.2011.1334.387.3299.3093l19.4948-7.7481c.2103-.0836.2103-.3811 0-.4647L2.3443 4.0181z"></path>
+            </svg>
+            </span>
+            <span style="color:#444; font-size: 14px; font-weight: 400; cursor: default; text-decoration: none;">Candidate-se facilmente</span>
+            </div>
+            ` : ''}
+            `;
+            jobList.appendChild(card);
+            });
+
+            // PAGINATION COMPONENT
+            // Change these values as needed for each page
+            const currentPage = 1;
+            const totalPages = 4;
+
+            let paginationHTML = `<div class="pagination">`;
+
+            // Previous arrow (disabled on first page)
+            if (currentPage > 1) {
+            paginationHTML += `<a href="pagina${currentPage - 1}.html" class="page-button" aria-label="Página anterior" tabindex="0">‹</a>`;
+            }
+
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+            if (i === currentPage) {
+            paginationHTML += `<span class="page-button active" aria-current="page" style="background:#595959;color:#fff;border:1px solid #595959;">${i}</span>`;
+            } else if (i === 2) {
+            paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=10&vjk=adb2638b46c1ee3a" class="page-button" tabindex="0">${i}</a>`;
+            } else if (i === 3) {
+            paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=20&vjk=33a21e64e4cf8a64" class="page-button" tabindex="0">${i}</a>`;
+            } else if (i === 4) {
+            paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=30&vjk=31998b5eee2dd5eb" class="page-button" tabindex="0">${i}</a>`;
+            } else {
+            paginationHTML += `<a href="pagina${i}.html" class="page-button" tabindex="0">${i}</a>`;
+            }
+            }
+
+            // Next arrow (disabled on last page)
+            if (currentPage < totalPages) {
+            paginationHTML += `<a href="https://br.indeed.com/jobs?q=jovem+aprendiz&l=ribeir%C3%A3o+preto%2C+sp&radius=25&start=10&vjk=adb2638b46c1ee3a" class="page-button" aria-label="Próxima página" tabindex="0" style="display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" focusable="false" role="img" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="width:20px;height:20px;">
+            <path d="M8.818 7.7574c-.3905-.3905-.3905-1.0237 0-1.4142.3906-.3905 1.0237-.3905 1.4143 0l4.942 4.9421.0077.0076a.9966.9966 0 01.2929.7071.9966.9966 0 01-.2929.7071l-.0077.0076-4.942 4.9421c-.3906.3905-1.0237.3905-1.4143 0-.3905-.3905-.3905-1.0237 0-1.4142L13.0606 12 8.818 7.7574z"></path>
+            </svg>
+            </a>`;
+            } else {
+            paginationHTML += `<span class="page-button page-button--disabled" aria-disabled="true">›</span>`;
+            }
+
+            paginationHTML += `</div>`;
+
+            jobList.insertAdjacentHTML('beforeend', paginationHTML);
+        }
+
+        function selectJob(id) {
+            selectedJobId = id;
+            renderJobList();
+            renderJobDetail();
+        }
+
+        function renderJobDetail() {
+            const job = jobs.find(j => j.id === selectedJobId);
+            if (!job) {
+                // Se não houver vaga selecionada, seleciona a primeira vaga automaticamente
+                if (jobs.length > 0) {
+                    selectJob(jobs[0].id);
+                } else {
+                    jobDetail.innerHTML = `<div class="indeed-job-detail-empty">
+                        <span style="color:#bbb;font-size:18px;">Selecione uma vaga para ver os detalhes</span>
+                    </div>`;
+                }
+                return;
+            }
+            jobDetail.innerHTML = `
+            <div class="custom-job-detail-card">
+                <!-- Topo -->
+                <div class="custom-job-header">
+                    <div class="custom-job-title">${job.title}</div>
+                    <div class="custom-job-company-row">
+                        <a href="${job.companyUrl || '#'}" class="custom-job-company-link custom-job-company-link--underline" target="_blank" rel="noopener" style="color:#2d2d2d;">
+                            ${job.company}
+                            <span class="custom-job-link-icon" title="Abrir site da empresa">
+                                <svg width="16" height="16" fill="none" viewBox="0 0 16 16">
+                                    <path d="M10.5 2.5h3v3M6 10l7.5-7.5M13 8.5v4a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h4" stroke="#2d2d2d" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </a>
+                        <style>
+                        .custom-job-company-link--underline {
+                            position: relative;
+                            text-decoration: none !important;
+                            transition: color .18s;
+                        }
+                        .custom-job-company-link--underline::after {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            left: 0; right: 0; bottom: -2px;
+                            height: 2px;
+                            background: #2d2d2d;
+                            border-radius: 1px;
+                            width: 100%;
+                            transition: background .18s;
+                        }
+                        .custom-job-company-link--underline:hover,
+                        .custom-job-company-link--underline:focus {
+                            color: #164081 !important;
+                        }
+                        .custom-job-company-link--underline:hover .custom-job-link-icon svg,
+                        .custom-job-company-link--underline:focus .custom-job-link-icon svg {
+                            stroke: #164081 !important;
+                        }
+                        .custom-job-company-link--underline:hover::after,
+                        .custom-job-company-link--underline:focus::after {
+                            background: #164081;
+                        }
+                        </style>
+                        <span class="custom-job-rating">
+                            <svg width="15" height="15" fill="#2d2d2d" viewBox="0 0 20 20" style="vertical-align:middle;">
+                                <polygon points="10,1.5 12.59,7.36 18.97,7.97 14,12.26 15.45,18.5 10,15.27 4.55,18.5 6,12.26 1.03,7.97 7.41,7.36"/>
+                            </svg>
+                            ${job.rating ? job.rating.toFixed(1) : '--'}
+                        </span>
+                    </div>
+                    <div class="custom-job-location-row">
+                        <span class="custom-job-location-icon">
+                            <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+                                <path d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10z" stroke="#767676" stroke-width="2" fill="none"/>
+                                <circle cx="12" cy="11" r="2" fill="#767676"/>
+                            </svg>
+                        </span>
+                        <span>${job.location}</span>
+                    </div>
+                    <div class="custom-job-actions">
+                        <button class="custom-job-apply-btn" onclick="window.location.href='./digite-seu-e-mail.html'">
+                            Candidatar-se
+                        </button>
+                        <button class="custom-job-icon-btn" title="Salvar vaga">
+                            <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                                <path d="M10 15.5l-6.09 3.19 1.18-6.89L.18 7.81l6.91-1L10 1l2.91 5.81 6.91 1-5 4.99 1.18 6.89z" stroke="#767676" stroke-width="1.3" fill="none"/>
+                            </svg>
+                        </button>
+                        <button class="custom-job-icon-btn" title="Copiar link" onclick="navigator.clipboard.writeText(window.location.href)">
+                            <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
+                                <rect x="7" y="7" width="8" height="8" rx="2" stroke="#767676" stroke-width="1.3" fill="none"/>
+                                <rect x="3" y="3" width="8" height="8" rx="2" stroke="#767676" stroke-width="1.3" fill="none"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Bloco 1: Dados da vaga -->
+                <div class="custom-job-section">
+                    <div class="custom-job-section-title">
+
+                        Dados da vaga
+                    </div>
+                    <div class="custom-job-tags">
+                        ${job.type.map(t => `<span class="custom-job-tag">${t}</span>`).join('')}
+                        ${job.schedule ? job.schedule.map(s => `<span class="custom-job-tag">${s}</span>`).join('') : ''}
+                        ${job.salary ? job.salary.map(s => `<span class="custom-job-tag">${s}</span>`).join('') : ''}
+                        ${job.jornada ? `<span class="custom-job-tag">${job.jornada}</span>` : ''}
+                        ${job.periodo ? job.periodo.map(p => `<span class="custom-job-tag">${p}</span>`).join('') : ''}
+
+                    </div>
+                </div>
+                <!-- Bloco 2: Localização -->
+                <div class="custom-job-section">
+                    <div class="custom-job-section-title">
+
+                        Localização
+                    </div>
+                    <div class="custom-job-location-text">${job.location}</div>
+                </div>
+                <!-- Bloco 3: Benefícios -->
+                <div class="custom-job-section">
+                    <div class="custom-job-section-title">
+
+                        Benefícios
+                    </div>
+                    ${job.benefits && job.benefits.length
+                    ? `<ul class="custom-job-benefits-list">
+                            ${job.benefits.map(b => `<li>${b}</li>`).join('')}
+                        </ul>`
+                    : `<div class="custom-job-benefits-empty">Retirados da descrição completa da vaga</div>`
+                }
+                </div>
+                <!-- Bloco 4: Descrição completa da vaga -->
+                <div class="custom-job-section">
+                    <div class="custom-job-section-title">
+
+                        Descrição completa da vaga
+                    </div>
+                    <div class="custom-job-description">
+                        <p style="margin-bottom:12px;">
+                            ${job.description}
+                        </p>
+                        <ul class="custom-job-desc-list">
+                            ${job.schedule && job.schedule.length ? `<li>Horário: ${job.schedule.join(', ')}</li>` : ''}
+                            ${job.education && job.education.length ? `<li>Escolaridade mínima: ${job.education.join(', ')}</li>` : ''}
+                            ${job.requirements && job.requirements.length ? job.requirements.map(r => `<li>${r}</li>`).join('') : ''}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+        renderJobList();
+        renderJobDetail();
+
+        // PAGINATION CSS
+        const paginationStyle = document.createElement('style');
+        paginationStyle.innerHTML = `
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 8px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 32px;
+            gap: 0;
+        }
+
+        .page-button,
+        .arrow-button {
+            width: 32px;
+            height: 38px;
+            min-width: 32px;
+            min-height: 38px;
+            max-width: 32px;
+            max-height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Noto Sans', Arial, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 6px;
+            border: none;
+            background: #e4e2e0;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.18s, color 0.18s;
+            cursor: pointer;
+            outline: none;
+            box-sizing: border-box;
+            user-select: none;
+            margin: 0 7px;
+            padding: 0;
+        }
+
+        .page-button.active,
+        .page-button[aria-current="page"] {
+            background: #333;
+            color: #fff;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .page-button:hover:not(.active):not(.page-button--disabled),
+        .arrow-button:hover:not(.page-button--disabled) {
+            background: #d6d6d6;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .page-button--disabled,
+        .page-button[aria-disabled="true"],
+        .arrow-button.page-button--disabled {
+            background: #f3f2f1;
+            color: #bbb;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .arrow-button svg {
+            display: block;
+            margin: auto;
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #333;
+        }
+
+        .arrow-button.arrow-left svg {
+            transform: scaleX(-1);
+        }
+        .page-button.active,
+        .page-button[aria-current="page"] {
+            background: #333333;
+            color: #fff;
+            border: 1px solid #333333;
+            cursor: default;
+            pointer-events: none;
+        }
+        .page-button:hover:not(.active):not(.page-button--disabled) {
+            background: #e4e2e0;
+            color: #333;
+            text-decoration: none;
+        }
+        .page-button--disabled,
+        .page-button[aria-disabled="true"] {
+            background: #f3f2f1;
+            color: #bbb;
+            border: 1px solid #d6d6d6;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        `;
+        document.head.appendChild(paginationStyle);
+
+    </script>
+    <style>
+        .custom-job-detail-card {
+            background: #fff;
+            border-radius: 8px;
+            max-width: 620px;
+            width: 100%;
+            padding: 24px;
+            font-family: 'Noto Sans', sans-serif;
+            color: #2d2d2d;
+            box-sizing: border-box;
+        }
+
+        .custom-job-header {
+            border-bottom: 1px solid #e4e2e0;
+            padding-bottom: 18px;
+            margin-bottom: 24px;
+        }
+
+        .custom-job-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d2d2d;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .custom-job-company-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 6px;
+            font-size: 1rem;
+        }
+
+        .custom-job-company-link {
+            color: #2557a7;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .custom-job-company-link:hover {
+            text-decoration: underline;
+        }
+
+        .custom-job-link-icon {
+            display: inline-flex;
+            vertical-align: middle;
+        }
+
+        .custom-job-rating {
+            color: #6f6f6f;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            font-weight: 500;
+        }
+
+        .custom-job-location-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #6f6f6f;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .custom-job-location-icon {
+            display: inline-flex;
+            vertical-align: middle;
+        }
+
+        .custom-job-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .custom-job-apply-btn {
+            background: #2557a7;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            padding: 10px 24px;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .custom-job-apply-btn:hover {
+            background: #174ea6;
+        }
+
+        .custom-job-icon-btn {
+            background: #f3f2f1;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background .2s;
+            color: #222;
+            font-size: 1rem;
+        }
+
+        .custom-job-icon-btn:hover {
+            background: #e4e2e0;
+        }
+
+        .custom-job-section {
+            border-bottom: 1px solid #e4e2e0;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+        }
+
+        .custom-job-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .custom-job-section-title {
+            font-weight: bold;
+            font-size: 1.08rem;
+            color: #2d2d2d;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .custom-job-section-icon {
+            background: #f3f2f1;
+            border-radius: 6px;
+            padding: 3px 7px;
+            font-size: 1.1em;
+            margin-right: 4px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .custom-job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .custom-job-tag {
+            background: #f3f2f1;
+            color: #2d2d2d;
+            border-radius: 6px;
+            font-size: 13px;
+            padding: 4px 10px;
+            margin-bottom: 4px;
+            display: inline-block;
+        }
+
+        .custom-job-location-text {
+            color: #2d2d2d;
+            font-size: 1rem;
+        }
+
+        .custom-job-benefits-list {
+            margin: 0;
+            padding-left: 18px;
+            color: #2d2d2d;
+            font-size: 14px;
+            list-style: disc inside;
+        }
+
+        .custom-job-benefits-list li {
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .custom-job-benefits-empty {
+            color: #6f6f6f;
+            font-size: 14px;
+        }
+
+        .custom-job-description {
+            color: #2d2d2d;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .custom-job-desc-list {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 15px;
+            color: #2d2d2d;
+        }
+
+        .custom-job-desc-list li {
+            margin-bottom: 7px;
+            line-height: 1.6;
+            list-style-type: disc;
+        }
+
+        @media (max-width: 900px) {
+            .custom-job-detail-card {
+                max-width: 100%;
+                padding: 16px 6px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .custom-job-detail-card {
+                padding: 10px 2px;
+                border-radius: 0;
+            }
+
+            .custom-job-title {
+                font-size: 1.1rem;
+            }
+
+            .custom-job-section-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+    <footer class="indeed-footer">
+        <div class="indeed-footer-content">
+            <nav class="indeed-footer-nav">
+                <a href="https://br.indeed.com/conselho-de-carreira" class="indeed-footer-link">Guia de carreira</a>
+                <a href="https://br.indeed.com/browsejobs" class="indeed-footer-link">Pesquisar vagas</a>
+                <a href="https://br.indeed.com/career/salaries" class="indeed-footer-link">Salários</a>
+                <a href="https://www.indeedevents.com/es-mx/" class="indeed-footer-link">Indeed Eventos</a>
+                <a href="https://br.indeed.com/worldwide" class="indeed-footer-link">Países</a>
+                <a href="https://br.indeed.com/about" class="indeed-footer-link">Sobre o Indeed</a>
+                <a href="https://br.indeed.com/help" class="indeed-footer-link">Ajuda</a>
+                <span class="indeed-footer-copyright">© 2025 Indeed</span>
+                <a href="https://br.indeed.com/esg/accessibility?hl=pt" class="indeed-footer-link">Acessibilidade no Indeed</a>
+                <a href="https://hrtechprivacy.com/pt/brands/indeed#privacypolicy" class="indeed-footer-link">Centro de privacidade e preferências de anúncios</a>
+                <a href="https://br.indeed.com/legal?hl=pt&from=gnav-jobsearch--indeedmobile" class="indeed-footer-link">Termos</a>
+            </nav>
+        </div>
+    </footer>
+    <style>
+        .indeed-footer {
+            background: #fff;
+            padding: 32px 16px;
+            font-family: Arial, system-ui, sans-serif;
+            font-size: 14px;
+            color: #333333;
+            width: 100%;
+        }
+
+        .indeed-footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .indeed-footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+
+        .indeed-footer-link {
+            color: #333333;
+            margin: 0 12px;
+            text-decoration: none;
+            transition: color .2s;
+            white-space: nowrap;
+        }
+
+        .indeed-footer-link:hover {
+            color: #2557A7;
+        }
+
+        .indeed-footer-copyright {
+            margin: 0 12px;
+            color: #333333;
+            white-space: nowrap;
+            font-size: 14px;
+            font-family: inherit;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .indeed-footer-nav {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .indeed-footer-link,
+            .indeed-footer-copyright {
+                margin: 6px 12px;
+            }
+        }
+    </style>
+
+</body>
+
+</html>
